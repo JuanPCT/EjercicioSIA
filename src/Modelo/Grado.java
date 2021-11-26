@@ -13,7 +13,7 @@ import ufps.util.colecciones_seed.ListaCD;
  */
 public class Grado {
     
-    ListaCD<Estudiante> estudiantes;
+    private ListaCD<Estudiante> estudiantes;
 
     public Grado() {
         estudiantes=new ListaCD<Estudiante>();
@@ -31,7 +31,21 @@ public class Grado {
         this.estudiantes = estudiantes;
     }
 
-    
+    //Metodo que devuelve los estudiantes aprobados de cada grado
+    public String getAprobados(int i){
+        String msg="";
+        
+        msg+="\n----------------------------------------------";
+        msg+="\nGrado "+(i)+", Total de estudiantes : "+ this.getEstudiantes().getTamanio();
+
+        for(Estudiante est:this.getEstudiantes()){
+
+            msg+="\n "+est.aprobo();
+        }
+        
+        
+        return msg;
+    }
     
     
     

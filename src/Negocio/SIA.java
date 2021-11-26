@@ -38,30 +38,30 @@ public class SIA {
         ArchivoLeerURL archivo = new ArchivoLeerURL(url);
         //Leer el archivo: 
         Object datos[] = archivo.leerArchivo();
-        //i=1 , por que la cabecera NO se procesa
-        //codigos;nombre de estudiante;email;semestre
+        //Guardo los nombres de las materias
         String datoMaterias = datos[0].toString();
         String datos2[] = datoMaterias.split(",");
         String nombresMaterias[] = new String[9];
-        for (int i = 4; i < datos.length; i++) {
+        for (int i = 4; i < datos2.length; i++) {
             nombresMaterias[i-4]=datos2[i];
         }
-        
+        //i=1 , por que la cabecera NO se procesa
+        //codigos;nombre de estudiante;email;semestre
         for (int i = 1; i < datos.length; i++) {
             String datoEstudiante = datos[i].toString();
             String datosestudiantes[] = datoEstudiante.split(",");
-            int codigo = Integer.parseInt(datos2[0]);
-            String nombre = datos2[1];
-            boolean sexo = Boolean.parseBoolean(datos2[2]);
-            short grado = Short.parseShort(datos2[3]);
+            int codigo = Integer.parseInt(datosestudiantes[0]);
+            String nombre = datosestudiantes[1];
+            boolean sexo = Boolean.parseBoolean(datosestudiantes[2]);
+            short grado = Short.parseShort(datosestudiantes[3]);
             
             //creo un objeto estudiante con los datos obtenidos del csv
             Estudiante estudiante=new Estudiante(codigo, nombre, sexo);
             
             //Guardo los nombres de las materias matematica,sociales,ingles,educación_física,artes,ciencias,lenguaje,fisica,quimica
             for (int j = 0; j < nombresMaterias.length; j++) {
-                if(!datos2[j+4].equals("-")){
-                    Materia materia = new Materia(nombresMaterias[i],datos2[j+4].charAt(0));
+                if(!datosestudiantes[j+4].equals("-")){
+                    Materia materia = new Materia(nombresMaterias[j],datosestudiantes[j+4].charAt(0));
                     estudiante.addMateria(materia);
                 } 
                 
@@ -76,17 +76,21 @@ public class SIA {
         }
         
     }
+    
+    public String getAprobados(int i){
+        return grados[i-1].getAprobados(i);
+    }
 
     @Override
     public String toString() {
         
         String msg="";
         
-        msg+="------------------------------";
+        
         
         for (int i = 0; i < grados.length; i++) {
-            
-            msg+="\nGrado "+i+", Total de estudiantes : "+ grados[i].getEstudiantes().getTamanio();
+            msg+="\n----------------------------------------------";
+            msg+="\nGrado "+(i+1)+", Total de estudiantes : "+ grados[i].getEstudiantes().getTamanio();
             
             for(Estudiante est:grados[i].getEstudiantes()){
                 

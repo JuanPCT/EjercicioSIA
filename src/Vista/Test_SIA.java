@@ -18,6 +18,12 @@ public class Test_SIA
         SIA sia = new SIA(url);
         
         System.out.println(sia.toString());
+        System.out.println(sia.getAprobados(1));
+        System.out.println(sia.getAprobados(2));
+        System.out.println(sia.getAprobados(3));
+        System.out.println(sia.getAprobados(4));
+        System.out.println(sia.getAprobados(5));
+        System.out.println(sia.getAprobados(6));
         
     }
     
