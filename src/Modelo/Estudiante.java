@@ -8,22 +8,32 @@ public class Estudiante {
 
     private int codigo;
     private String nombre;
+    private boolean sexo;
     private ListaCD<Materia> materias;
 
     public Estudiante() {
         this.materias= new ListaCD<Materia>();
     }
 
-    public Estudiante(int codigo, String nombre) {
+    public Estudiante(int codigo, String nombre, boolean sexo) {
         this();
         this.codigo = codigo;
         this.nombre = nombre;
+        this.sexo = sexo;
     }
 
     public void addMateria(Materia mat){
         this.materias.insertarInicio(mat);
     }
-    
+
+    public boolean isSexo() {
+        return sexo;
+    }
+
+    public void setSexo(boolean sexo) {
+        this.sexo = sexo;
+    }
+            
     public int getCodigo() {
         return codigo;
     }

@@ -16,7 +16,9 @@ public class Test_SIA
         String url="https://gitlab.com/pruebas_madarme/persistencia/ed_c/sia/-/raw/main/sia-grupoC.csv";
         
         SIA sia = new SIA(url);
-            
+        
+        System.out.println(sia.toString());
+        
     }
     
 
