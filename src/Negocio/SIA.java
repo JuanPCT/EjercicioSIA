@@ -76,5 +76,27 @@ public class SIA {
         }
         
     }
+
+    @Override
+    public String toString() {
+        
+        String msg="";
+        
+        msg+="------------------------------";
+        
+        for (int i = 0; i < grados.length; i++) {
+            
+            msg+="\nGrado "+i+", Total de estudiantes : "+ grados[i].getEstudiantes().getTamanio();
+            
+            for(Estudiante est:grados[i].getEstudiantes()){
+                
+                msg+="\n "+est.toString();
+            }
+        }
+        
+        return msg;
+    }
+    
+    
     
 }

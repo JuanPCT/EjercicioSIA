@@ -18,6 +18,23 @@ public class Materia {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+        
+    }
+    
+    public int getNotaInt(){
+        switch (nota) {
+            case 'E':
+                return 100;
+            case 'B':
+                return 80;
+            case 'A':
+                return 60;
+            case 'D':
+                return 30;
+            default:
+                throw new AssertionError();
+            
+        }
     }
 
     public char getNota() {

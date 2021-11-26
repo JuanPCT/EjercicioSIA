@@ -22,6 +22,8 @@ public class Estudiante {
         this.sexo = sexo;
     }
 
+    
+    
     public void addMateria(Materia mat){
         this.materias.insertarInicio(mat);
     }
@@ -56,6 +58,24 @@ public class Estudiante {
 
     public void setMaterias(ListaCD<Materia> materias) {
         this.materias = materias;
+    }
+    
+    public String aprobo(){
+        boolean aprobo;
+        int promedio=0;
+        for(Materia mat:this.materias){
+            promedio+=mat.getNotaInt();
+        }
+        promedio=promedio/this.materias.getTamanio();
+        if(promedio>=60)
+            return codigo + " - " + nombre + " - Aprobo";
+        else
+            return codigo + " - " + nombre + " - Reprobo"; 
+    }
+
+    @Override
+    public String toString() {
+        return codigo + " - " + nombre + " - " + materias.getTamanio() + " materias cursadas";
     }
     
     
